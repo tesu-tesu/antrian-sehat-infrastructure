@@ -10,6 +10,16 @@ services:
     networks:
       - antrian_sehat
 
+  frontend:
+    image: yanuadin/app-antrian-sehat-frontend:1.0
+    working_dir: /var/www/antrian-sehat-frontend
+    restart: unless-stopped
+    working_dir: /var/www/antrian-sehat-frontend
+    ports:
+      - 3000:80
+    networks:
+      - antrian_sehat
+
   mysql:
     image: mysql:8.0.21
     container_name: mysql
