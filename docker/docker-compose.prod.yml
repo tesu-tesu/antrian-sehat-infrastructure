@@ -34,8 +34,7 @@ services:
     ports: 
       - 3307:3306
     volumes:
-      - ./mysql:/docker-entrypoint-initdb.d
-      - ./mysql/data:/var/lib/mysql
+      - mysql-data:/var/lib/mysql
     networks:
       - antrian_sehat
 
@@ -46,10 +45,14 @@ services:
       - "80:80"
       - "443:443"
     volumes: 
-      - ./docker.sock:/var/run/docker.sock:ro
+      - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./nginx/nginx-proxy.conf:/etc/nginx/conf.d/nginx-proxy.conf:ro
     networks:
       - antrian_sehat
+
+volumes:
+  mysql-data:
+    driver: local
 
 networks:
   antrian_sehat:
