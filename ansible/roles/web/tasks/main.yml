@@ -10,4 +10,5 @@
   shell: docker-compose -f docker-compose.prod.yml up -d --build
   args:
     chdir: /home/deploy/antrian-sehat/docker
+  environment: "{{ db_env }}"
   register: environment
