@@ -44,7 +44,7 @@ services:
     ports:
       - 8000:80
     volumes:
-      - ./nginx-proxy.conf:/etc/nginx/conf.d/nginx-proxy.conf:ro
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/
     networks:
       - antrian_sehat
 
