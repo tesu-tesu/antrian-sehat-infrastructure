@@ -5,8 +5,7 @@ services:
     container_name: antrian_sehat-app
     restart: unless-stopped
     working_dir: /var/www/antrian-sehat-backend
-    volumes:
-      - ./.env:/var/www/antrian-sehat-backend/.env
+    env_file: ".env"
     networks:
       - antrian_sehat
 
