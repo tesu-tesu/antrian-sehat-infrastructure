@@ -38,13 +38,14 @@ services:
       - antrian_sehat
 
   nginx:
-    image: nginx:alpine
-    container_name: nginx
+    image: jwilder/nginx-proxy:0.7.0
     restart: unless-stopped
-    ports:
-      - 8000:80
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/conf.d/
+    ports: 
+      - "80:80"
+      - "443:443"
+    volumes: 
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./nginx/nginx-proxy.conf:/etc/nginx/conf.d/nginx-proxy.conf:ro
     networks:
       - antrian_sehat
 
