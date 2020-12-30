@@ -1,5 +1,0 @@
-# Must enter variable
-db_env:
-    DB_DATABASE: antrian_sehat
-    DB_USERNAME: root
-    DB_PASSWORD: Gamers123098

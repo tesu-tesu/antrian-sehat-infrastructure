@@ -1,3 +1,6 @@
 /docker/.env
 /terraform/terraform.tfvars
 /docker/mysql
+/ansible/group_vars/all
+/ansible/roles/db/files/backup.sql
+/ansible/roles/web/files/.env
