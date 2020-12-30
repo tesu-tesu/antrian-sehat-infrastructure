@@ -1,8 +1,8 @@
 version: "3.7"
 services:
   backend:
-    image: yanuadin/app-antrian-sehat:1.3
-    container_name: antrian_sehat-app
+    image: yanuadin/app-antrian-sehat-backend-prod:1.0
+    container_name: antrian_sehat-backend
     restart: unless-stopped
     working_dir: /var/www/antrian-sehat-backend
     env_file: ".env"
@@ -11,6 +11,7 @@ services:
 
   frontend:
     image: yanuadin/app-antrian-sehat-frontend:1.0
+    container_name: antrian_sehat-frontend
     working_dir: /var/www/antrian-sehat-frontend
     restart: unless-stopped
     working_dir: /var/www/antrian-sehat-frontend
