@@ -10,7 +10,7 @@ services:
       - antrian_sehat
 
   frontend:
-    image: yanuadin/app-antrian-sehat-frontend:1.0
+    image: yanuadin/app-antrian-sehat-frontend:1.1
     container_name: antrian_sehat-frontend
     restart: unless-stopped
     working_dir: /var/www/antrian-sehat-frontend
