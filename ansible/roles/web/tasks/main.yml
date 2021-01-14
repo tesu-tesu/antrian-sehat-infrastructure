@@ -6,6 +6,14 @@
     src: .env
     dest: /home/deploy/antrian-sehat/docker/.env
 
+- name: Add acme.json config file
+  copy:
+    src: acme.json
+    dest: /home/deploy/antrian-sehat/docker/acme.json
+    owner: deploy
+    group: deploy
+    mode: '0600'
+
 - name: Run Docker-Compose
   shell: docker-compose -f docker-compose.prod.yml up -d --build
   args:
