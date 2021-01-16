@@ -7,13 +7,11 @@ services:
     working_dir: /var/www/antrian-sehat-backend
     env_file: ".env"
     labels: 
-      - "traefik.enable=true"
-      - "traefik.http.routers.backend.tls=true"
-      - "traefik.http.routers.backend.entrypoints=web"
-      - "traefik.http.routers.backend.rule=Host(`api.antrian-sehat.me`)"
-      - "traefik.http.routers.backend.tls=true"
-      - "traefik.http.routers.backend.tls.certresolver=letsencrypt"
-      - "traefik.port=80"
+      - traefik.enable=true
+      - traefik.http.routers.backend.rule=Host(`api.antrian-sehat.me`)
+      - traefik.http.routers.backend.tls=true
+      - traefik.http.routers.backend.tls.certresolver=lets-encrypt
+      - traefik.port=80
     networks:
       - antrian_sehat
 
@@ -23,13 +21,11 @@ services:
     restart: unless-stopped
     working_dir: /var/www/antrian-sehat-frontend
     labels: 
-      - "traefik.enable=true"
-      - "traefik.http.routers.frontend.tls=true"
-      - "traefik.http.routers.frontend.entrypoints=web"
-      - "traefik.http.routers.frontend.rule=Host(`www.antrian-sehat.me`, `antrian-sehat.me`)"
-      - "traefik.http.routers.frontend.tls=true"
-      - "traefik.http.routers.frontend.tls.certresolver=letsencrypt"
-      - "traefik.port=80"
+      - traefik.enable=true
+      - traefik.http.routers.frontend.rule=Host(`www.antrian-sehat.me`, `antrian-sehat.me`)
+      - traefik.http.routers.frontend.tls=true
+      - traefik.http.routers.frontend.tls.certresolver=lets-encrypt
+      - traefik.port=80
     networks:
       - antrian_sehat
 
