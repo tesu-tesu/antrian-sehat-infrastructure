@@ -6,12 +6,6 @@ services:
     restart: unless-stopped
     working_dir: /var/www/antrian-sehat-backend
     env_file: ".env"
-    labels: 
-      - traefik.enable=true
-      - traefik.http.routers.backend.rule=Host(`api.antrian-sehat.me`)
-      - traefik.http.routers.backend.tls=true
-      - traefik.http.routers.backend.tls.certresolver=lets-encrypt
-      - traefik.port=80
     networks:
       - antrian_sehat
 
@@ -20,12 +14,6 @@ services:
     container_name: antrian_sehat-frontend
     restart: unless-stopped
     working_dir: /var/www/antrian-sehat-frontend
-    labels: 
-      - traefik.enable=true
-      - traefik.http.routers.frontend.rule=Host(`www.antrian-sehat.me`, `antrian-sehat.me`)
-      - traefik.http.routers.frontend.tls=true
-      - traefik.http.routers.frontend.tls.certresolver=lets-encrypt
-      - traefik.port=80
     networks:
       - antrian_sehat
 
@@ -49,24 +37,13 @@ services:
     networks:
       - antrian_sehat
 
-  traefik:
-    image: traefik:v2.3
+  nginx:
+    image: yanuadin/nginx-router:latest
+    container_name: nginx
     restart: unless-stopped
     ports: 
       - "80:80"
       - "443:443"
-    volumes: 
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./acme.json/acme.json
-    command:
-      - "--providers.docker=true"
-      - "--entryPoints.web.address=:80"
-      - "--entryPoints.websecure.address=:443"
-      - "--entryPoints.web.http.redirections.entryPoint.to=websecure"
-      - "--entryPoints.web.http.redirections.entryPoint.scheme=https"
-      - "--certificatesResolvers.lets-encrypt.acme.email=yanu30adi@gmail.com"
-      - "--certificatesResolvers.lets-encrypt.acme.storage=acme.json"
-      - "--certificatesResolvers.lets-encrypt.acme.tlsChallenge=true"
     networks:
       - antrian_sehat
 
