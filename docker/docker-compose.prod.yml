@@ -32,8 +32,6 @@ services:
       - 3307:3306
     volumes:
       - mysql-data:/var/lib/mysql
-    labels:
-      - "traefik.enable=false"
     networks:
       - antrian_sehat
 
